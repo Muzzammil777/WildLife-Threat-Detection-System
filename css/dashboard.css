@@ -1,0 +1,422 @@
+/* Wildlife Threat Dashboard Styles */
+
+:root {
+  --danger-color: #e74c3c;
+  --warning-color: #f39c12;
+  --success-color: #27ae60;
+  --primary-color: #2c7744;
+  --secondary-color: #134e5e;
+}
+
+/* Dashboard Layout */
+.dashboard-content {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #2c7744, #134e5e);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.nav-btn i {
+  margin-right: 8px;
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Filters */
+.filters {
+  background-color: #f8f9fa;
+  padding: 20px;
+  color: rgba(0, 0, 0, 0.9);
+  font-weight: 500;
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-group label {
+  font-weight: 500;
+  color: #555;
+  white-space: nowrap;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.filter-group select {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: white;
+  color: #333;
+  font-size: 14px;
+  min-width: 150px;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 500;
+}
+
+/* Threat List */
+.threat-list {
+  max-height: 600px;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.threat-item {
+  padding: 15px 20px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.threat-item:hover {
+  background-color: #f5f9ff;
+  cursor: pointer;
+}
+
+.threat-icon {
+  font-size: 24px;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: white;
+}
+
+.threat-icon.person {
+  background-color: #3498db;
+}
+
+.threat-icon.vehicle {
+  background-color: #f39c12;
+}
+
+.threat-icon.fire {
+  background-color: #e74c3c;
+}
+
+.threat-icon.weapon {
+  background-color: #8e44ad;
+}
+
+.threat-details {
+  flex-grow: 1;
+}
+
+.threat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.threat-title {
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
+}
+
+.threat-time {
+  font-size: 13px;
+  color: #777;
+}
+
+.threat-location {
+  font-size: 14px;
+  color: #555;
+}
+
+.threat-status {
+  margin-left: 15px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-notified {
+  background-color: rgba(39, 174, 96, 0.2);
+  color: #27ae60;
+}
+
+.status-pending {
+  background-color: rgba(243, 156, 18, 0.2);
+  color: #f39c12;
+}
+
+/* Loading indicator */
+.loading-threats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0;
+}
+
+.loading-threats .spinner {
+  margin-bottom: 15px;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fff;
+  margin: 10vh auto;
+  padding: 0;
+  width: 80%;
+  max-width: 700px;
+  border-radius: 8px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+  animation: modalFadeIn 0.3s;
+}
+
+.modal-header {
+  padding: 15px 20px;
+  background-color: #f5f5f5;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.modal-header h2 i {
+  margin-right: 10px;
+  color: var(--danger-color);
+}
+
+.close-modal {
+  font-size: 28px;
+  font-weight: bold;
+  color: #555;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-footer {
+  padding: 15px 20px;
+  border-top: 1px solid #ddd;
+  text-align: right;
+}
+
+.primary-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.primary-btn:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.close-btn {
+  background-color: #eee;
+  border: none;
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+/* Threat detail styles */
+.threat-detail-header {
+  margin-bottom: 20px;
+}
+
+.threat-detail-section {
+  margin-bottom: 20px;
+}
+
+.threat-detail-section h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #444;
+  display: flex;
+  align-items: center;
+}
+
+.threat-detail-section h3 i {
+  margin-right: 8px;
+  color: var(--secondary-color);
+}
+
+.threat-confidence {
+  height: 24px;
+  width: 100%;
+  background-color: #eee;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.threat-confidence-bar {
+  height: 100%;
+  background: linear-gradient(to right, #27ae60, #f39c12);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.threat-detail-image {
+  max-width: 100%;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.detail-map {
+  height: 200px;
+  background-color: #eee;
+  margin-top: 10px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Animations */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .filter-group {
+    width: 100%;
+  }
+
+  .modal-content {
+    width: 95%;
+    margin: 5vh auto;
+  }
+}
+
+/* Improve text visibility in dashboard components */
+.dashboard-content h2,
+.dashboard-content h3,
+.dashboard-content h4 {
+  color: rgba(0, 0, 0, 0.9);
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+/* Enhance text readability in filters and tables */
+table th,
+table td {
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 500;
+}
+
+/* Ensure alert text is highly visible */
+.threat-alert,
+.notification-alert {
+  color: rgba(0, 0, 0, 0.9);
+  font-weight: 500;
+}
+
+/* Enhanced Header Styles for Dashboard */
+header h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 10px rgba(47, 220, 80, 0.4);
+  animation: glow 3s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 10px rgba(47, 220, 80, 0.4);
+  }
+  to {
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6), 0 0 15px rgba(47, 220, 80, 0.7),
+      0 0 25px rgba(47, 220, 80, 0.9);
+  }
+}
+
+header p {
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 15px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  font-weight: 500;
+}

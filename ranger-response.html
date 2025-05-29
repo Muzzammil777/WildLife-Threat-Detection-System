@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ranger Response System</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/ranger-response.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1><i class="fas fa-tree"></i> Forest Ranger Response System</h1>
+        <p>Document actions taken for wildlife threat alerts</p>
+      </header>
+
+      <div class="nav-buttons">
+        <a href="dashboard.html" class="nav-btn">
+          <i class="fas fa-shield-alt"></i> Back to Dashboard
+        </a>
+        <button id="refresh-pending-btn" class="nav-btn">
+          <i class="fas fa-sync-alt"></i> Refresh Pending Alerts
+        </button>
+      </div>
+
+      <div class="dashboard-content">
+        <div class="filters">
+          <div class="filter-group">
+            <label for="status-filter">Status:</label>
+            <select id="status-filter">
+              <option value="pending" selected>Pending Action</option>
+              <option value="responded">Responded</option>
+              <option value="all">All Alerts</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="ranger-filter">Ranger Assigned:</label>
+            <select id="ranger-filter">
+              <option value="all" selected>All Rangers</option>
+              <option value="current">Assigned to Me</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="alerts-container">
+          <h2 class="section-title">
+            <i class="fas fa-exclamation-triangle"></i> Pending Alerts
+          </h2>
+
+          <div class="alert-note info-alert">
+            <p>
+              These alerts require ranger action and documentation. Please
+              update the status after addressing each alert.
+            </p>
+          </div>
+
+          <div id="pending-alerts" class="alerts-list">
+            <!-- Alerts will be loaded dynamically here -->
+            <div class="loading-spinner">
+              <i class="fas fa-spinner fa-spin"></i> Loading pending alerts...
+            </div>
+          </div>
+        </div>
+
+        <!-- Response Form Modal -->
+        <div id="response-modal" class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2>
+                <i class="fas fa-clipboard-check"></i> Ranger Response Form
+              </h2>
+              <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+              <div class="alert-details" id="alert-details">
+                <!-- Alert details will be populated here -->
+              </div>
+
+              <form id="ranger-response-form">
+                <input type="hidden" id="threat-id" name="threat-id" />
+
+                <div class="form-group">
+                  <label for="action-taken">Action Taken:</label>
+                  <select id="action-taken" name="action-taken" required>
+                    <option value="" disabled selected>
+                      Select action type...
+                    </option>
+                    <option value="investigated">Site Investigated</option>
+                    <option value="resolved">Threat Resolved</option>
+                    <option value="falseAlarm">False Alarm</option>
+                    <option value="monitoringInitiated">
+                      Monitoring Initiated
+                    </option>
+                    <option value="lawEnforcement">
+                      Law Enforcement Contacted
+                    </option>
+                    <option value="other">Other Action</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="ranger-name">Ranger Name:</label>
+                  <input
+                    type="text"
+                    id="ranger-name"
+                    name="ranger-name"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="response-details">Details of Action:</label>
+                  <textarea
+                    id="response-details"
+                    name="response-details"
+                    rows="5"
+                    placeholder="Provide detailed information about the action taken to address this threat..."
+                    required
+                  ></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="photo-upload">Upload Evidence (Optional):</label>
+                  <input
+                    type="file"
+                    id="photo-upload"
+                    name="photo-upload"
+                    accept="image/*"
+                  />
+                  <div class="upload-preview" id="upload-preview"></div>
+                </div>
+
+                <div class="form-buttons">
+                  <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Submit Response
+                  </button>
+                  <button type="button" class="cancel-btn">
+                    <i class="fas fa-times"></i> Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Completed Responses Section -->
+        <div class="responses-container">
+          <h2 class="section-title">
+            <i class="fas fa-check-circle"></i> Completed Responses
+          </h2>
+
+          <div id="completed-responses" class="responses-list">
+            <!-- Completed responses will be loaded dynamically here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/ranger-response.js"></script>
+  </body>
+</html>

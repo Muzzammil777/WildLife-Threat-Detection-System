@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wildlife Threat Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1><i class="fas fa-shield-alt"></i> Wildlife Threat Dashboard</h1>
+        <p>Monitor and manage detected wildlife threats</p>
+      </header>
+
+      <div class="nav-buttons">
+        <a href="index.html" class="nav-btn">
+          <i class="fas fa-home"></i> Back to Detection
+        </a>
+        <a href="ranger-response.html" class="nav-btn">
+          <i class="fas fa-clipboard-check"></i> Ranger Response System
+        </a>
+        <button id="refresh-threats-btn" class="nav-btn">
+          <i class="fas fa-sync-alt"></i> Refresh Threats
+        </button>
+      </div>
+
+      <div class="dashboard-content">
+        <div class="filters">
+          <div class="filter-group">
+            <label for="time-filter">Time Frame:</label>
+            <select id="time-filter">
+              <option value="all">All Time</option>
+              <option value="today" selected>Today</option>
+              <option value="week">This Week</option>
+              <option value="month">This Month</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="threat-type-filter">Threat Type:</label>
+            <select id="threat-type-filter">
+              <option value="all" selected>All Types</option>
+              <option value="human">Human Activity</option>
+              <option value="vehicle">Vehicles</option>
+              <option value="fire">Fire/Smoke</option>
+              <option value="weapon">Weapons</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="notification-filter">Notification:</label>
+            <select id="notification-filter">
+              <option value="all" selected>All</option>
+              <option value="sent">Sent</option>
+              <option value="pending">Pending</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="threat-list" id="threat-list">
+          <div class="loading-threats">
+            <div class="spinner"></div>
+            <p>Loading threats...</p>
+          </div>
+          <!-- Threats will be inserted here -->
+        </div>
+      </div>
+
+      <!-- Threat Detail Modal -->
+      <div id="threat-modal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2><i class="fas fa-exclamation-triangle"></i> Threat Details</h2>
+            <span class="close-modal">&times;</span>
+          </div>
+          <div class="modal-body" id="modal-body">
+            <!-- Threat details will be inserted here -->
+          </div>
+          <div class="modal-footer">
+            <button id="notify-ranger-btn" class="primary-btn">
+              <i class="fas fa-bell"></i> Notify Forest Ranger
+            </button>
+            <button class="close-btn">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Wildlife Threat Detection System</p>
+    </footer>
+
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>
