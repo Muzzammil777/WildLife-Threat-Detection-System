@@ -1,0 +1,458 @@
+/* CSS for Ranger Response Page */
+
+/* Alert List Styles */
+.alerts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.alert-item {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 15px;
+  transition: all 0.3s ease;
+  border-left: 4px solid #f39c12;
+}
+
+.alert-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.alert-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alert-icon i {
+  font-size: 40px;
+  color: #f39c12;
+}
+
+.alert-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.alert-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.9);
+  margin-bottom: 5px;
+}
+
+.alert-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.alert-meta-item {
+  display: flex;
+  align-items: center;
+}
+
+.alert-meta-item i {
+  margin-right: 5px;
+}
+
+.alert-location {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.alert-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.action-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  min-width: 120px;
+}
+
+.action-btn i {
+  margin-right: 8px;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.action-btn.view-btn {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+.action-btn.respond-btn {
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+}
+
+.modal-content {
+  background-color: white;
+  margin: 50px auto;
+  max-width: 700px;
+  width: 90%;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  animation: modalSlideDown 0.3s ease-out;
+}
+
+@keyframes modalSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  color: white;
+  padding: 15px 20px;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.close-modal {
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+/* Alert Details */
+.alert-details {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 4px solid #f39c12;
+}
+
+.alert-details h3 {
+  margin-top: 0;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.alert-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.alert-detail-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.alert-detail-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.alert-detail-value {
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.form-group input[type="text"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-group input[type="file"] {
+  border: 1px dashed #ddd;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.upload-preview {
+  margin-top: 10px;
+  max-width: 300px;
+}
+
+.upload-preview img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.submit-btn,
+.cancel-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  color: white;
+}
+
+.cancel-btn {
+  background-color: #f8f9fa;
+  color: #666;
+  border: 1px solid #ddd;
+}
+
+.submit-btn i,
+.cancel-btn i {
+  margin-right: 8px;
+}
+
+/* Responses List Styles */
+.responses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.response-item {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  border-left: 4px solid #27ae60;
+}
+
+.response-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.response-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.response-date {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+}
+
+.response-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.response-ranger {
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 500;
+}
+
+.response-action {
+  background-color: #2ecc71;
+  color: white;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.response-details {
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-radius: 5px;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+}
+
+.response-evidence {
+  margin-top: 10px;
+}
+
+.evidence-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 5px;
+}
+
+.evidence-images {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.evidence-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.evidence-image:hover {
+  transform: scale(1.05);
+}
+
+/* Section title */
+.section-title {
+  font-size: 22px;
+  color: rgba(0, 0, 0, 0.9);
+  margin: 25px 0 15px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.section-title i {
+  margin-right: 8px;
+  color: var(--primary-color);
+}
+
+/* Info alert */
+.alert-note {
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.info-alert {
+  background-color: rgba(52, 152, 219, 0.1);
+  border-left: 4px solid #3498db;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+/* Loading spinner */
+.loading-spinner {
+  text-align: center;
+  padding: 20px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.loading-spinner i {
+  margin-right: 8px;
+  color: var(--primary-color);
+}
+
+/* Enhanced Header Styles for Ranger Response */
+header h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 10px rgba(47, 220, 80, 0.4);
+  animation: glow 3s infinite alternate;
+}
+
+header p {
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 15px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  font-weight: 500;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 10px rgba(47, 220, 80, 0.4);
+  }
+  to {
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6), 0 0 15px rgba(47, 220, 80, 0.7),
+      0 0 25px rgba(47, 220, 80, 0.9);
+  }
+}
